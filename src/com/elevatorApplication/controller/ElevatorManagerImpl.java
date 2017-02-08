@@ -5,13 +5,14 @@ import java.util.Map;
 
 import com.elevatorApplication.model.Elevator;
 import com.elevatorApplication.utilitiy.FifoStrategy;
+import com.elevatorApplication.utilitiy.InertialStrategy;
 
 public class ElevatorManagerImpl implements ElevatorManager{
 	private int nextId;
 	private  Map<Integer, Elevator> elevators;
 	@Override
 	public int addElevator() {
-		Elevator e = new Elevator(nextId, new FifoStrategy());
+		Elevator e = new Elevator(nextId, new InertialStrategy());
 		elevators.put(nextId,e);
 		nextId ++;
 		return elevators.size();

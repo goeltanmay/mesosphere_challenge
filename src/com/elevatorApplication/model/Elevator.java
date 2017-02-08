@@ -60,7 +60,7 @@ public class Elevator {
 				// get to the stop
 				currentLevel += direction;
 				// stop moving
-				direction = 0;
+//				direction = 0;
 				// remove the stop from queue
 				requestQueue.remove(currentLevel);
 				// open the door
