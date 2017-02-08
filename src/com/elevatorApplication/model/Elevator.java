@@ -54,13 +54,14 @@ public class Elevator {
 			return;
 		}
 		// check if there is any stop in queue, and go to that stop. else stay where you are.
-		if(requestQueue.peek() != null)
+		if(requestQueue.peek() != null){
+			direction = stepStrategy.getDirection(currentLevel, direction, requestQueue);
 			// if reaching the next stop, stop at the next stop and open the door
 			if (currentLevel + direction == stepStrategy.getNextStop(currentLevel, direction, requestQueue)){
 				// get to the stop
 				currentLevel += direction;
 				// stop moving
-//				direction = 0;
+ 				// direction = 0;
 				// remove the stop from queue
 				requestQueue.remove(currentLevel);
 				// open the door
@@ -68,15 +69,15 @@ public class Elevator {
 			}
 			else {
 				// if target is up, direction is 1
-				// if target is down, direction is -1
-				direction = stepStrategy.getDirection(currentLevel, direction, requestQueue);
+				// if target is down, direction is -1	
 				currentLevel += direction;
 			}
+		}
 		else direction = 0;
 	}
 	
 	public void getStatus(){
 		// print the status here
-		System.out.println(String.format("Status of Elevator %d : Level : %d, Direction : %d, Next Floor : %d", elevatorId, currentLevel, direction, requestQueue.peek()));
+		System.out.println(String.format("Status of Elevator %d : Level : %d, Direction : %d, Next Floor : %d, Doors Open? : %b", elevatorId, currentLevel, direction, requestQueue.peek(), doorOpen));
 	}
 }
