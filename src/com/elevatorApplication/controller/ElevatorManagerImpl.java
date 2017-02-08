@@ -9,10 +9,11 @@ public class ElevatorManagerImpl implements ElevatorManager{
 	private int nextId;
 	private  Map<Integer, Elevator> elevators;
 	@Override
-	public void addElevator(int elevatorId) {
+	public int addElevator() {
 		Elevator e = new Elevator(nextId);
 		elevators.put(nextId,e);
 		nextId ++;
+		return elevators.size();
 	}
 
 	@Override
@@ -33,6 +34,11 @@ public class ElevatorManagerImpl implements ElevatorManager{
 	public ElevatorManagerImpl(){
 		nextId = 1;
 		this.elevators = new HashMap<>();
+	}
+
+	@Override
+	public void getStatusOfAllElevators() {
+		for(Elevator e : elevators.values()) e.getStatus();
 	}
 
 }

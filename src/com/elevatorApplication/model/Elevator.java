@@ -21,6 +21,7 @@ public class Elevator {
 		super();
 		this.elevatorId = elevatorId;
 		this.currentLevel = 0;
+		this.direction = 0;
 		this.requestQueue = new LinkedBlockingQueue<>();
 	}
 	
@@ -42,6 +43,21 @@ public class Elevator {
 	
 	public void step(){
 		if(requestQueue.peek() != null)
-			this.currentLevel = getNextFloor();
+			if (currentLevel + direction == requestQueue.peek()){
+				this.currentLevel = getNextFloor();
+				direction = 0;
+			}
+			else {
+				if(requestQueue.peek() > currentLevel)
+					direction = 1;
+				else direction = -1;
+				currentLevel += direction;
+			}
+		else direction = 0;
+	}
+	
+	public void getStatus(){
+		// print the status here
+		System.out.println(String.format("Status of Elevator %d : Level : %d, Direction : %d, Next Floor : %d", elevatorId, currentLevel, direction, requestQueue.peek()));
 	}
 }
