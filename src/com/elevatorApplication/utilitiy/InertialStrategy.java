@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Queue;
 
-public class InertialStrategy implements StepStrategy{
+public class InertialStrategy implements NextStopStrategy{
 
 	@Override
 	public int getNextStop(int currentLocation, int currentDirection, Queue<Integer> requestQueue) {

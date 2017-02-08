@@ -3,7 +3,7 @@ package com.elevatorApplication.model;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.elevatorApplication.utilitiy.StepStrategy;
+import com.elevatorApplication.utilitiy.NextStopStrategy;
 
 public class Elevator {
 	private int elevatorId;
@@ -11,7 +11,7 @@ public class Elevator {
 	private int direction;
 	private boolean doorOpen;
 	private Queue<Integer> requestQueue;
-	private StepStrategy stepStrategy;
+	private NextStopStrategy stepStrategy;
 	
 	public int getElevatorId() {
 		return elevatorId;
@@ -21,7 +21,7 @@ public class Elevator {
 		return currentLevel;
 	}
 	
-	public Elevator(int elevatorId, StepStrategy strategy) {
+	public Elevator(int elevatorId, NextStopStrategy strategy) {
 		super();
 		this.elevatorId = elevatorId;
 		this.currentLevel = 0;
