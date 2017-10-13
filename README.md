@@ -17,3 +17,4 @@ Finally, I used the strategy pattern to make 2 distinct strategies of choosing n
 Run the class ControlPanel.java in Eclipse.
 test
 dlvg
+ergew
